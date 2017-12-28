@@ -7,6 +7,9 @@
 #define SALT "5D168E49078002F6A86E869C7DCF601A7B6689681C7D475161CA0A6D3925C5D85B3A2C8FED825694270A242F4A1725B1D6C4DA11E1642046B00ED9F0798E6924"
 #define SALTSIZE 129
 
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_mixer.h>
+
 typedef struct Enemy_struct Enemy;
 typedef enum direction_enum direction;
 typedef struct Path_struct Path;
@@ -32,8 +35,6 @@ typedef struct Field_struct Field;
 #include "enemy.h"
 #include "turret.h"
 #include "data.h"
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_mixer.h>
 
 const SDL_Rect fullscreenRec;
 

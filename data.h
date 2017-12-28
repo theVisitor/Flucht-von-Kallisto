@@ -39,6 +39,7 @@ TurretData turretData[8][4];
 FireObjectData fOData[8][4];
 EnemyData enemyData[3];
 
+int loadAudio(Audio *audio);
 int loadTextures(Graphics *graphics, int level);
 void unloadTextures(Graphics *graphics);
 int createText(Graphics *graphics);

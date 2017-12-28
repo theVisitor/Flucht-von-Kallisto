@@ -65,7 +65,7 @@ struct Field_struct {
 
 int play(SDL_Renderer *renderer, SDL_Window *window, int mapnumber, int difficulty);
 void handleClick(GameObject *game, SDL_Point *click, int *state, Turret **selected, turretType *building, Field map[560]);
-int cycle(Graphics *graphics, GameObject *game, int state, Turret *selected, turretType building, Field map[]);
+int cycle(Graphics *graphics, GameObject *game, int state, Turret *selected, turretType building, Field map[], Audio *audio);
 void showTurretSelectionDescription(Graphics *graphics, GameObject *game, int upgrading, Turret *turret);
 void showNewTurretDescription(Graphics *graphics, GameObject *game, int build, turretType type);
 void showTurretSelection(Graphics *graphics, Turret *turret);

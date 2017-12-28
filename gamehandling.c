@@ -71,6 +71,7 @@ int play(SDL_Renderer *renderer, SDL_Window *window, int mapnumber, int difficul
     game.spawntimes[1] = 0;
 
     Graphics graphics = {.renderer = renderer};
+    Audio audio;
     Field map[560];
 
     ///loading from files
@@ -84,8 +85,8 @@ int play(SDL_Renderer *renderer, SDL_Window *window, int mapnumber, int difficul
 
 	if (loadAudio(&audio))
 	{
-		printf("audio dail\n");
-		return -2
+		printf("audio fail\n");
+		return -2;
 	}
 	else
 	{
@@ -137,7 +138,7 @@ int play(SDL_Renderer *renderer, SDL_Window *window, int mapnumber, int difficul
                 handleClick(&game, &click, &state, &selected, &building, map);
             }
         }
-        cycle(&graphics, &game, state, selected, building, map, audio);  /// <- the actual game calculations
+        cycle(&graphics, &game, state, selected, building, map, &audio);  /// <- the actual game calculations
         SDL_RenderPresent(graphics.renderer);
         if (clock() < framestart + fastFPSwait_SDL) {
             ///SDL_Delay is better for CPU

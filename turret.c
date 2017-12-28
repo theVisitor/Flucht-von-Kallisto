@@ -61,8 +61,8 @@ void upgradeTurret(GameObject *game, Turret *turret) {
 void doTurrets(Graphics *graphics, GameObject *game, Audio *audio) {
     if (game->frame == game->speed) {
         renderTurretBases(graphics, game);
-        updateTurrets(graphics, game);
-        renderTurretHeads(graphics, game, audio);
+        updateTurrets(graphics, game, audio);
+        renderTurretHeads(graphics, game);
     } else {
         updateTurrets(graphics, game, audio);
     }

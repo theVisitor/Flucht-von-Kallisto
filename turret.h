@@ -45,11 +45,11 @@ struct Explosion_struct {
 
 int buildTurret(GameObject *game, int x, int y, turretType type);
 void upgradeTurret(GameObject *game, Turret *turret);
-void doTurrets(Graphics *graphics, GameObject *game);
+void doTurrets(Graphics *graphics, GameObject *game, Audio *audio);
 void renderTurretBases(Graphics *graphics, GameObject *game);
 void renderTurretHeads(Graphics *graphics, GameObject *game);
-void updateTurrets(Graphics *graphics, GameObject *game);
-int fire(Graphics *graphics, GameObject *game, Turret *turret, Enemy *enemy);
+void updateTurrets(Graphics *graphics, GameObject *game, Audio *audio);
+int fire(Graphics *graphics, GameObject *game, Turret *turret, Enemy *enemy, Audio *audio);
 int fireLaser(Graphics *graphics, Turret *turret, Enemy *enemy);
 int fireInDirection(GameObject *game, Turret *turret, Enemy *enemy, double sectorStart, double sectorEnd, double advance);
 void transformVector(double *x, double *y, double alpha, double length);
