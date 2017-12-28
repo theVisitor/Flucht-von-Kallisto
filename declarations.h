@@ -32,6 +32,7 @@ typedef struct Field_struct Field;
 #include "turret.h"
 #include "data.h"
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_mixer.h>
 
 const SDL_Rect fullscreenRec;
 

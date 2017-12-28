@@ -160,8 +160,11 @@ int main(int argc, char *args[]) {
         SDL_Quit();
         return -1;
     }
+    int flags = MIX_INIT_MP3;
+    Mix_Init(flags);
 	///initialize audio playback
-	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) printf("%s", Mix_GetError());
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024) == -1)
+        printf("%s", Mix_GetError());
 
     IMG_Init(IMG_INIT_PNG);
     TTF_Init();

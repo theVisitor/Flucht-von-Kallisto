@@ -224,14 +224,15 @@ int fire(Graphics *graphics, GameObject *game, Turret *turret, Enemy *enemy) {
     case GAUSS:
         fail += fireAtEnemy(game, turret, enemy); break;
     case LASER:
-        fail += fireLaser(graphics, turret, enemy); 
-		///load audio
-		Mix_Chunk *sound = Mix_LoadWAV("audio/science_fiction_laser_gun_slinky.wav");
+        fail += fireLaser(graphics, turret, enemy);
+		Mix_Chunk *sound = Mix_LoadWAV("audio/science_fiction_laser_gun_slinky.wav"); ///load audio
 		///initializing mixer channels
-		Mix_AllocatedChannels(16);
+		Mix_AllocateChannels(16);
 		///playing sound
 		Mix_VolumeChunk(sound, 1);
 		Mix_PlayChannel(1, sound, 0);
+		///fire
+
 		break;
     }
     return fail;
