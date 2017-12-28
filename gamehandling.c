@@ -57,6 +57,7 @@ int play(SDL_Renderer *renderer, SDL_Window *window, int mapnumber, int difficul
         .explosions = NULL,
 
         .factoryStaff = 0,
+        .priority = 0, //mission
         .missionProgress = 0,
         .wavetime = 1100,
         .speed = 1,
@@ -136,6 +137,9 @@ int play(SDL_Renderer *renderer, SDL_Window *window, int mapnumber, int difficul
                     }
                 }
                 handleClick(&game, &click, &state, &selected, &building, map);
+            } else if (event.type == SDL_MOUSEBUTTONDOWN && event.button.button == SDL_BUTTON_RIGHT) {
+                click.x = event.button.x; click.y = event.button.y;
+                handleRightClick(&game, &click);
             }
         }
         cycle(&graphics, &game, state, selected, building, map, &audio);  /// <- the actual game calculations
@@ -160,7 +164,7 @@ int play(SDL_Renderer *renderer, SDL_Window *window, int mapnumber, int difficul
 }
 
 /**
- * Function for handling click-events during the game
+ * Function for handling click-events during the game (left click)
  */
 void handleClick(GameObject *game, SDL_Point *click, int *state, Turret **selected, turretType *building, Field map[560]) {
     ///menu-click?
@@ -252,6 +256,18 @@ void handleClick(GameObject *game, SDL_Point *click, int *state, Turret **select
     } else if (SDL_PointInRect(click, &missionRec) && game->factoryStaff > 0) {
         game->missionStaff++;
         game->factoryStaff--;
+    }
+}
+
+/**
+ * Function for handling click-events during the game (left click)
+ */
+void handleRightClick(GameObject *game, SDL_Point *click) {
+    ///speed click?
+    if (SDL_PointInRect(click, &speedRec)) {
+        if (game->speed > 1) {
+            game->speed >> 1;
+        }
     }
 }
 

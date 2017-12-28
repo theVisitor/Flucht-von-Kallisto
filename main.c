@@ -166,6 +166,8 @@ int main(int argc, char *args[]) {
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024) == -1)
         printf("%s", Mix_GetError());
 
+    Mix_AllocateChannels(16);
+
     IMG_Init(IMG_INIT_PNG);
     TTF_Init();
 
@@ -195,6 +197,7 @@ int main(int argc, char *args[]) {
     SDL_DestroyTexture(background);
     IMG_Quit();
     TTF_Quit();
+    Mix_Quit();
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();

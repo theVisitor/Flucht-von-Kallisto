@@ -226,7 +226,7 @@ int fire(Graphics *graphics, GameObject *game, Turret *turret, Enemy *enemy, Aud
     case LASER:
         fail += fireLaser(graphics, turret, enemy);
 		///initializing mixer channels
-		Mix_AllocateChannels(16);
+		//Mix_AllocateChannels(16);
 		///playing sound
 		Mix_VolumeChunk(audio->laser, 1);
 		Mix_PlayChannel(1, audio->laser, 0);
