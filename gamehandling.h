@@ -44,11 +44,12 @@ struct GameObject_struct {
 
     int missionStaff;       ///people working for the mission
     int factoryStaff;       ///people producing credits in the factory
+    int priority;           ///put to factory or mission?
     int missionProgress;    ///how far the mission has proceeded
     int missionEnd;         ///when the mission will end
     int wavetime;           ///frames passed since start of this wave
-    int speed;              ///speed of the game: 1 = normal, 2 = double
-    int frame;
+    int speed;              ///speed of the game: 1 = normal, 2 = double, 4 = quad
+    int frame;              ///which physicsframe in a renderframe
     int *spawntimes;        ///array saving when to spawn an enemy in this wave
     double credit;          ///how much credit the player has
     double totalcredit;     ///how much credit the factory produced since levelstart
