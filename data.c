@@ -140,6 +140,13 @@ int loadAudio(Audio *audio) {
 		return -1;
 	}
 
+	ausio->explosion = Mix_LoadWAV("resources/audio/explosion_internal_loud_bang_blow_up_safe.wav");
+	if (audio->explosion == NULL)
+	{
+		printf("audio not found");
+		return -1;
+	}
+
 	return 0;
 }
 

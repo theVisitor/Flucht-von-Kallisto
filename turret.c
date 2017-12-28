@@ -204,11 +204,11 @@ int fire(Graphics *graphics, GameObject *game, Turret *turret, Enemy *enemy, Aud
 		///playing sound
 		if (turret->level < 3) {
 			Mix_VolumeChunk(audio->mortar, 1);
-			Mix_PlayChannel(2, audio->mortar, 0);
+			Mix_PlayChannel(-1, audio->mortar, 0);
 		}
 		else {
 			Mix_VolumeChunk(audio->mortarrocket, 1);
-			Mix_PlayChannel(3, audio->mortarrocket, 0);
+			Mix_PlayChannel(-1, audio->mortarrocket, 0);
 		}
     case ROCKET:
         switch (turret->level) {
@@ -237,7 +237,7 @@ int fire(Graphics *graphics, GameObject *game, Turret *turret, Enemy *enemy, Aud
 
 		///playing sound
 		Mix_VolumeChunk(audio->laser, 1);
-		Mix_PlayChannel(1, audio->laser, 0);
+		Mix_PlayChannel(-1, audio->laser, 0);
 
 		break;
     }
@@ -523,6 +523,10 @@ void doExplosions(Graphics *graphics, GameObject *game) {
         dRect.x = game->explosions->x - game->explosions->radius;
         dRect.y = game->explosions->y - game->explosions->radius;
         SDL_RenderCopyEx(graphics->renderer, graphics->explosionTX, NULL, &dRect, rand(), NULL, SDL_FLIP_NONE);
+
+		///playing sound
+		Mix_VolumeChunk(audio->explosion, 1);
+		Mix_PlayChannel(-1, audio->explosion, 0);
 
         nactive = game->explosions->next;
         free(game->explosions);
