@@ -6,7 +6,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
-#include <SDL2/SDL_audio.h>
+#include <SDL2/SDL_mixer.h>
 #include <time.h>
 
 #include "declarations.h"
@@ -160,6 +160,8 @@ int main(int argc, char *args[]) {
         SDL_Quit();
         return -1;
     }
+	///initialize audio playback
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) printf("%s", Mix_GetError());
 
     IMG_Init(IMG_INIT_PNG);
     TTF_Init();
