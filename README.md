@@ -6,3 +6,7 @@ Die Bedienung erfolgt per Maus und Tastatur.
 
 Bei der Entwicklung hatten wir mehrere Probleme mit SDL2 und konnten leider nicht alle beheben.
 Dies führt dazu, dass das Spiel auf einigen PCs einfach nicht laufen will.
+
+
+
+Soundeffekte von https://www.zapsplat.com
