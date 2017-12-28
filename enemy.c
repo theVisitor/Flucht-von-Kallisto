@@ -67,7 +67,7 @@ int spawnEnemy(GameObject *game) {
 void doEnemies(Graphics *graphics, GameObject *game) {
     updateEnemies(game);
     sortEnemies(game);
-    if(game->frame == game->speed) {
+    if (game->frame == game->speed) {
         renderEnemies(graphics, game);
     }
 }
@@ -79,7 +79,7 @@ void renderEnemies(Graphics *graphics, GameObject *game) {
     SDL_Rect sourceRec;
     SDL_Rect destRec;
     for (Enemy *enemy = game->enemies; enemy != NULL; enemy = enemy->next) {
-        enemy->anilife = (enemy->anilife +1) % enemyData[enemy->type].aniCycleFrames;
+        enemy->anilife = (enemy->anilife + game->speed) % enemyData[enemy->type].aniCycleFrames;
         sourceRec = enemyData[enemy->type].rect;
         sourceRec.x = sourceRec.w * ((enemy->anilife * enemyData[enemy->type].aniCycleStates) / enemyData[enemy->type].aniCycleFrames);
         destRec = enemyData[enemy->type].rect;

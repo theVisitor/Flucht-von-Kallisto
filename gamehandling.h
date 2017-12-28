@@ -21,6 +21,7 @@ struct Graphics_struct {
     SDL_Texture *buttons;
     SDL_Texture *numbers;
     SDL_Texture *base;
+    SDL_Texture *speedbutton;
 
     SDL_Rect baseRec;
     SDL_Renderer *renderer;
@@ -65,6 +66,7 @@ void showNewTurretDescription(Graphics *graphics, GameObject *game, int build, t
 void showTurretSelection(Graphics *graphics, Turret *turret);
 void showNewTurret(Graphics *graphics, turretType building, Field map[]);
 void renderCircle(Graphics *graphics, int x, int y, int r);
+void renderSpeed(Graphics *graphics, int speed);
 void renderNumbers(Graphics *graphics, GameObject *game);
 void renderNumber(Graphics *graphics, int number, SDL_Rect *dRect);
 int getPerson(GameObject *game, int force);

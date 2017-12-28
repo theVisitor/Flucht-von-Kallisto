@@ -33,6 +33,7 @@ const SDL_Rect rightButtonTXRec = {.x = 1157, .y = 535, .w = 106, .h = 55};
 const SDL_Rect factoryRec = {.x = 1010, .y = 610, .w = 120, .h = 55};
 const SDL_Rect missionRec = {.x = 1150, .y = 610, .w = 120, .h = 55};
 const SDL_Rect fullscreenRec = {.x = 1255, .y = 2, .w = 20, .h = 20};
+const SDL_Rect speedRec = {.x = 2, .y = 2, .w = 20, .h = 20};
 
 const SDL_Rect pistolRec = {.x = 1005, .y = 24, .w = 66, .h = 66};
 const SDL_Rect rifleRec = {.x = 1073, .y = 24, .w = 66, .h = 66};
@@ -177,6 +178,12 @@ void handleClick(GameObject *game, SDL_Point *click, int *state, Turret **select
         *state = 3;
         *building = LASER;
 
+    ///speed click?
+    } else if (*state != 4 && SDL_PointInRect(click, &speedRec)) {
+        game->speed *= 2;
+        if (game->speed > 4) {
+            game->speed = 1;
+        }
 
     ///map click?
     } else if (SDL_PointInRect(click, &mapInnerRec)) {
@@ -256,6 +263,7 @@ int cycle(Graphics *graphics, GameObject *game, int state, Turret *selected, tur
         doTurrets(graphics, game);
         doFireObjects(graphics, game);
         doExplosions(graphics, game);
+        game->frame++;
     }
     ///update factory, mission
     game->missionProgress += game->missionStaff;
@@ -299,7 +307,9 @@ int cycle(Graphics *graphics, GameObject *game, int state, Turret *selected, tur
     case 4:
         showNewTurretDescription(graphics, game, 1, building); break;
     }
+    renderSpeed(graphics, game->speed);
     renderNumbers(graphics, game);
+    return 0;
 }
 
 /**
@@ -437,6 +447,15 @@ void renderCircle(Graphics *graphics, int x, int y, int r) {
     };
     SDL_SetRenderDrawColor(graphics->renderer, 255, 255, 255, 255);
     SDL_RenderDrawLines(graphics->renderer, circ, 33);
+}
+
+void renderSpeed(Graphics *graphics, int speed) {
+    SDL_Rect sRect = {.x = 0, .y = 0, .w = 20, .h = 20};
+    switch (speed) {
+        case 2: sRect.x = 20; break;
+        case 4: sRect.x = 40; break;
+    }
+    SDL_RenderCopy(graphics->renderer, graphics->speedbutton, &sRect, &speedRec);
 }
 
 /**
