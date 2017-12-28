@@ -119,8 +119,22 @@ EnemyData enemyData[3] = {
 
 /*Function for prefetching audio*/
 int loadAudio(Audio *audio) {
-    audio->laser = Mix_LoadWAV("audio/science_fiction_laser_gun_slinky.wav");
+    audio->laser = Mix_LoadWAV("resources/audio/science_fiction_laser_gun_slinky.wav");
 	if (audio->laser == NULL)
+	{
+		printf("audio not found");
+		return -1;
+	}
+
+	audio->mortar = Mix_LoadMP3("resources/audio/explosion_large_glass_debris_002.mp3");
+	if (audio->mortar == NULL)
+	{
+		printf("audio not found");
+		return -1;
+	}
+
+	audio->mortarrocket = Mix_LoadMP3("resources/audio/comedy_missle_launch.mp3");
+	if (audio->mortarrocket == NULL)
 	{
 		printf("audio not found");
 		return -1;

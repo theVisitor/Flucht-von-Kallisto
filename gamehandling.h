@@ -29,6 +29,8 @@ struct Graphics_struct {
 
 struct Audio_struct {
 	Mix_Chunk *laser;
+	Mix_Chunk *mortar;
+	Mix_Chunk *mortarrocket;
 };
 
 /**

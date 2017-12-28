@@ -163,7 +163,7 @@ int main(int argc, char *args[]) {
     int flags = MIX_INIT_MP3;
     Mix_Init(flags);
 	///initialize audio playback
-	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024) == -1)
+	if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 1024) == -1)
         printf("%s", Mix_GetError());
 
     Mix_AllocateChannels(16);
