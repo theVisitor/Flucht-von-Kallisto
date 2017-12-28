@@ -177,6 +177,13 @@ int loadTextures(Graphics *graphics, int level) {
     }
     graphics->base = SDL_CreateTextureFromSurface(graphics->renderer, tmp); SDL_FreeSurface(tmp);
 
+    tmp = IMG_Load("resources/textures/speed.png");
+    if (tmp == NULL) {
+        return -1;
+    }
+    graphics->speedbutton = SDL_CreateTextureFromSurface(graphics->renderer, tmp); SDL_FreeSurface(tmp);
+
+
     switch (level) {
     case 1: tmp = IMG_Load("resources/textures/starterslevel.png"); break;
     case 2: tmp = IMG_Load("resources/textures/helixlevel.png"); break;
@@ -207,6 +214,7 @@ void unloadTextures(Graphics *graphics) {
     SDL_DestroyTexture(graphics->descriptions);
     SDL_DestroyTexture(graphics->buttons);
     SDL_DestroyTexture(graphics->base);
+    SDL_DestroyTexture(graphics->speedbutton);
 }
 
 /**
