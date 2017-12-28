@@ -201,6 +201,15 @@ int fire(Graphics *graphics, GameObject *game, Turret *turret, Enemy *enemy, Aud
         } break;
     case MORTAR:
         fail += fireAtEnemy(game, turret, enemy); break;
+		///playing sound
+		if (turret->level < 3) {
+			Mix_VolumeChunk(audio->mortar, 1);
+			Mix_PlayChannel(2, audio->mortar, 0);
+		}
+		else {
+			Mix_VolumeChunk(audio->mortarrocket, 1);
+			Mix_PlayChannel(3, audio->mortarrocket, 0);
+		}
     case ROCKET:
         switch (turret->level) {
         case 0: fail += fireInDirection(game, turret, enemy, -2.0, 2.0, 0.0); break;
