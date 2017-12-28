@@ -181,8 +181,8 @@ int main(int argc, char *args[]) {
         return -1;
     }
 
-    //createdWithSdl(renderer);
-    //createdWithGimpBlender(renderer);
+    createdWithSdl(renderer);
+    createdWithGimpBlender(renderer);
     SDL_Texture *background = IMG_LoadTexture(renderer, "resources/textures/background.png");
 
     srand(time(NULL));

@@ -503,7 +503,7 @@ void updateFireObjects(GameObject *game) {
 /**
  * Function for executing and rendering explosions
  */
-void doExplosions(Graphics *graphics, GameObject *game) {
+void doExplosions(Graphics *graphics, Audio *audio, GameObject *game) {
     Explosion *nactive = NULL;
     double distSq;
     double radiusSq;

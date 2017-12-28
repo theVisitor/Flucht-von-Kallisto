@@ -1,0 +1,18 @@
+SOUNDS
+- find some
+	- good explosions
+	- gauss / railgun
+	- machine gun / machine cannons
+	- etc
+- system
+	- automatic channel switching, channel amount
+- fix
+	- rockets less loud
+- music
+	- background, main menu (?)
+
+TUTORIAL
+- create one
+
+TEXTURES
+- explosions

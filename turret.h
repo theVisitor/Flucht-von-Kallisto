@@ -59,7 +59,7 @@ void doFireObjects(Graphics *graphics, GameObject *game);
 void renderFireObjects(Graphics *graphics, GameObject *game);
 void destroyDeadFireObjects(GameObject *game);
 void updateFireObjects(GameObject *game);
-void doExplosions(Graphics *graphics, GameObject *game);
+void doExplosions(Graphics *graphics, Audio *audio, GameObject *game);
 void cleanupTurrets(GameObject *game);
 void cleanupFOs(GameObject *game);
 void cleanupExplosives(GameObject *game);

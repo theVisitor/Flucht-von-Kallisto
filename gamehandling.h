@@ -32,7 +32,7 @@ struct Audio_struct {
 	Mix_Chunk *mortar;
 	Mix_Chunk *mortarrocket;
 
-	MixChunk *explosion;
+	Mix_Chunk *explosion;
 };
 
 /**

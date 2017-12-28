@@ -298,7 +298,7 @@ int cycle(Graphics *graphics, GameObject *game, int state, Turret *selected, tur
         doEnemies(graphics, game);
         doTurrets(graphics, game, audio);
         doFireObjects(graphics, game);
-        doExplosions(graphics, game);
+        doExplosions(graphics, audio, game);
         game->frame++;
     }
     ///update factory, mission
@@ -314,7 +314,7 @@ int cycle(Graphics *graphics, GameObject *game, int state, Turret *selected, tur
     doEnemies(graphics, game);
     doTurrets(graphics, game, audio);
     doFireObjects(graphics, game);
-    doExplosions(graphics, game);
+    doExplosions(graphics, audio, game);
 
     ///render base
     SDL_Rect sRect = {.x = 0, .w = 140, .h = 70, .y = ((5 * game->missionProgress) / game->missionEnd) * 70};
