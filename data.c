@@ -119,7 +119,7 @@ EnemyData enemyData[3] = {
 
 /*Function for prefetching audio*/
 int loadAudio(Audio *audio) {
-    audio->laser = Mix_LoadWAV("audio/science_fiction_laser_gun_slinky.wav");
+    audio->laser = Mix_LoadWAV("resources/audio/science_fiction_laser_gun_slinky.wav");
 	if (audio->laser == NULL)
 	{
 		printf("audio not found");
