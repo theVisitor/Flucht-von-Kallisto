@@ -227,7 +227,11 @@ void handleClick(GameObject *game, SDL_Point *click, int *state, Turret **select
         if ((*selected)->buildStatus || !turretData[(*selected)->type][(*selected)->level].isAuto) {
             if ((*selected)->isManned) {
                 (*selected)->isManned = 0;
-                game->missionStaff++;
+                if (game->priority) {
+                    game->factoryStaff++;
+                } else {
+                    game->missionStaff++;
+                }
             } else if (!getPerson(game, 0)){
                 (*selected)->isManned = 1;
             }
