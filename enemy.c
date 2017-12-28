@@ -67,7 +67,9 @@ int spawnEnemy(GameObject *game) {
 void doEnemies(Graphics *graphics, GameObject *game) {
     updateEnemies(game);
     sortEnemies(game);
-    renderEnemies(graphics, game);
+    if(game->frame == game->speed) {
+        renderEnemies(graphics, game);
+    }
 }
 
 /**

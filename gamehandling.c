@@ -58,6 +58,8 @@ int play(SDL_Renderer *renderer, SDL_Window *window, int mapnumber, int difficul
         .factoryStaff = 0,
         .missionProgress = 0,
         .wavetime = 1100,
+        .speed = 1,
+        .frame = 1,
         .spawntimes = malloc(500 * sizeof(int)),
         .credit = 50,
         .totalcredit = 0};
@@ -239,11 +241,25 @@ void handleClick(GameObject *game, SDL_Point *click, int *state, Turret **select
  * Function for updating and rendering the frame
  */
 int cycle(Graphics *graphics, GameObject *game, int state, Turret *selected, turretType building, Field map[]) {
+    game->frame = 1;
+    while(game->frame < game->speed) {
+        ///only updates, no render
+        ///update factory, mission
+        game->missionProgress += game->missionStaff;
+        double production = game->factoryStaff * ((game->totalcredit + 500.0)/ 100000.0);
+        game->credit += production;
+        game->totalcredit += production;
+
+        ///update enemies, turrets, stuff like that
+        doWaves(game);
+        doEnemies(graphics, game);
+        doTurrets(graphics, game);
+        doFireObjects(graphics, game);
+        doExplosions(graphics, game);
+    }
     ///update factory, mission
     game->missionProgress += game->missionStaff;
-
     double production = game->factoryStaff * ((game->totalcredit + 500.0)/ 100000.0);
-
     game->credit += production;
     game->totalcredit += production;
 

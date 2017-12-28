@@ -163,7 +163,7 @@ int main(int argc, char *args[]) {
     IMG_Init(IMG_INIT_PNG);
     TTF_Init();
 
-    SDL_Window *window = SDL_CreateWindow("Flucht von Kallisto v1.2", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1280, 720, 0);
+    SDL_Window *window = SDL_CreateWindow("Flucht von Kallisto v1.1.2", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1280, 720, 0);
     if (window == NULL) {
         return -1;
     }

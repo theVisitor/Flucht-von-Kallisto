@@ -59,9 +59,13 @@ void upgradeTurret(GameObject *game, Turret *turret) {
  * Function for updating and rendering turrets for one frame
  */
 void doTurrets(Graphics *graphics, GameObject *game) {
-    renderTurretBases(graphics, game);
-    updateTurrets(graphics, game);
-    renderTurretHeads(graphics, game);
+    if(game->frame == game->speed) {
+        renderTurretBases(graphics, game);
+        updateTurrets(graphics, game);
+        renderTurretHeads(graphics, game);
+    } else {
+        updateTurrets(graphics, game);
+    }
 }
 
 /**
@@ -337,7 +341,9 @@ int generateFO(GameObject *game, double x, double y, double dx, double dy,
  */
 void doFireObjects(Graphics *graphics, GameObject *game) {
     updateFireObjects(game);
-    renderFireObjects(graphics, game);
+    if(game->frame == game->speed) {
+            renderFireObjects(graphics, game);
+    }
     destroyDeadFireObjects(game);
 }
 
