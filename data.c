@@ -126,14 +126,14 @@ int loadAudio(Audio *audio) {
 		return -1;
 	}
 
-	audio->mortar = Mix_LoadMP3("resources/audio/explosion_large_glass_debris_002.mp3");
+	audio->mortar = Mix_LoadWAV("resources/audio/explosion_large_glass_debris_002.wav");
 	if (audio->mortar == NULL)
 	{
 		printf("audio not found");
 		return -1;
 	}
 
-	audio->mortarrocket = Mix_LoadMP3("resources/audio/comedy_missle_launch.mp3");
+	audio->mortarrocket = Mix_LoadWAV("resources/audio/comedy_missle_launch.wav");
 	if (audio->mortarrocket == NULL)
 	{
 		printf("audio not found");
