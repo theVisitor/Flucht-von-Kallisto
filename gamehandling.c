@@ -266,8 +266,13 @@ void handleRightClick(GameObject *game, SDL_Point *click) {
     ///speed click?
     if (SDL_PointInRect(click, &speedRec)) {
         if (game->speed > 1) {
-            game->speed >> 1;
+            game->speed >>= 1;
         }
+    ///staff?
+    } else if (SDL_PointInRect(click, &factoryRec)) {
+        changePriority(game, 1);
+    } else if (SDL_PointInRect(click, &missionRec)) {
+        changePriority(game, 0);
     }
 }
 
@@ -333,6 +338,11 @@ int cycle(Graphics *graphics, GameObject *game, int state, Turret *selected, tur
         showNewTurretDescription(graphics, game, 0, building); break;
     case 4:
         showNewTurretDescription(graphics, game, 1, building); break;
+    }
+    if (game->priority) {
+        SDL_RenderCopy(graphics->renderer, graphics->selection, NULL, &factoryRec);
+    } else {
+        SDL_RenderCopy(graphics->renderer, graphics->selection, NULL, &missionRec);
     }
     renderSpeed(graphics, game->speed);
     renderNumbers(graphics, game);
@@ -541,18 +551,49 @@ void renderNumber(Graphics *graphics, int number, SDL_Rect *dRect) {
 }
 
 /**
+ * Function for changing the priority of workers,
+ * also moves the free workers
+ */
+void changePriority(GameObject *game, int newpriority) {
+    game->priority = newpriority;
+    if (newpriority) {
+        while (game->missionStaff > 1) {
+            game->missionStaff--;
+            game->factoryStaff++;
+        }
+    } else {
+        while (game->factoryStaff) {
+            game->factoryStaff--;
+            game->missionStaff++;
+        }
+    }
+}
+
+/**
  * Function for getting a person from the facility
  * returns 0 if a person was retrieved, -1 otherwise
  */
 int getPerson(GameObject *game, int force) {
-    if (game->factoryStaff) {
-        game->factoryStaff--;
-        return 0;
+    if (game->priority) {
+        if (game->missionStaff > 1) {
+            game->missionStaff--;
+            return 0;
+        }
+        if (game->factoryStaff) {
+            game->factoryStaff--;
+            return 0;
+        }
+    } else {
+        if (game->factoryStaff) {
+            game->factoryStaff--;
+            return 0;
+        }
+        if (game->missionStaff > 1) {
+            game->missionStaff--;
+            return 0;
+        }
     }
-    if (game->missionStaff > 1) {
-        game->missionStaff--;
-        return 0;
-    }
+
     if (force) {
         ///try turrets, without those in building process
         for (Turret *turret = game->turrets; turret != NULL; turret = turret->next) {

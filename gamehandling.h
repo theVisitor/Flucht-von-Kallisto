@@ -79,6 +79,7 @@ void renderCircle(Graphics *graphics, int x, int y, int r);
 void renderSpeed(Graphics *graphics, int speed);
 void renderNumbers(Graphics *graphics, GameObject *game);
 void renderNumber(Graphics *graphics, int number, SDL_Rect *dRect);
+void changePriority(GameObject *game, int newpriority);
 int getPerson(GameObject *game, int force);
 int countPersons(GameObject *game);
 void cleanupAll(GameObject *game);
