@@ -117,6 +117,18 @@ EnemyData enemyData[3] = {
      {.radius = 8, .speed = 3, .aniCycleFrames = 8, .aniCycleStates = 2, .rect = {.x = 0, .y = 15, .w = 13, .h = 17}},
 };
 
+/*Function for prefetching audio*/
+int loadAudio(Audio *audio) {
+	if (audio->laser = Mix_LoadWAV("audio/science_fiction_laser_gun_slinky.wav") == NULL)
+	{
+		printf("audio not found");
+		return -1;
+	}
+
+	return 0;	
+}
+
+
 /**
  * Function for loading all textures needed
  */

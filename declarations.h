@@ -24,6 +24,7 @@ typedef struct FireObjectData_struct FireObjectData;
 typedef struct EnemyData_struct EnemyData;
 
 typedef struct Graphics_struct Graphics;
+typedef struct Audio_struct Audio;
 typedef struct GameObject_struct GameObject;
 typedef struct Field_struct Field;
 

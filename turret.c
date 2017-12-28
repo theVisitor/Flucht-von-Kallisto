@@ -58,13 +58,13 @@ void upgradeTurret(GameObject *game, Turret *turret) {
 /**
  * Function for updating and rendering turrets for one frame
  */
-void doTurrets(Graphics *graphics, GameObject *game) {
+void doTurrets(Graphics *graphics, GameObject *game, Audio *audio) {
     if (game->frame == game->speed) {
         renderTurretBases(graphics, game);
         updateTurrets(graphics, game);
-        renderTurretHeads(graphics, game);
+        renderTurretHeads(graphics, game, audio);
     } else {
-        updateTurrets(graphics, game);
+        updateTurrets(graphics, game, audio);
     }
 }
 
@@ -111,7 +111,7 @@ void renderTurretHeads(Graphics *graphics, GameObject *game) {
 /**
  * Function for updating turrets
  */
-void updateTurrets(Graphics *graphics, GameObject *game) {
+void updateTurrets(Graphics *graphics, GameObject *game, Audio *audio) {
     int rangeSq;
     for (Turret *turret = game->turrets; turret != NULL; turret = turret->next) {
         if (!turret->isManned) {
@@ -133,7 +133,7 @@ void updateTurrets(Graphics *graphics, GameObject *game) {
             for (Enemy *enemy = game->enemies; enemy != NULL; enemy = enemy->next) {
                 if (SQUARE(turret->x - enemy->x) + SQUARE(turret->y - enemy->y) <= rangeSq) {
                     ///FIRE!
-                    fire(graphics, game, turret, enemy);
+                    fire(graphics, game, turret, enemy, audio);
 
                     if (turret->cooldown == (turretData[turret->type][turret->level].magazine - 1) * turretData[turret->type][turret->level].cycleTime) {
                         ///end of magazine
@@ -155,7 +155,7 @@ void updateTurrets(Graphics *graphics, GameObject *game) {
  * Function for shooting according
  * to the turrets specifications
  */
-int fire(Graphics *graphics, GameObject *game, Turret *turret, Enemy *enemy) {
+int fire(Graphics *graphics, GameObject *game, Turret *turret, Enemy *enemy, Audio *audio) {
     int fail = 0;
     double sec1, sec2;
     switch (turret->type) {
@@ -225,12 +225,11 @@ int fire(Graphics *graphics, GameObject *game, Turret *turret, Enemy *enemy) {
         fail += fireAtEnemy(game, turret, enemy); break;
     case LASER:
         fail += fireLaser(graphics, turret, enemy);
-		Mix_Chunk *sound = Mix_LoadWAV("audio/science_fiction_laser_gun_slinky.wav"); ///load audio
 		///initializing mixer channels
 		Mix_AllocateChannels(16);
 		///playing sound
-		Mix_VolumeChunk(sound, 1);
-		Mix_PlayChannel(1, sound, 0);
+		Mix_VolumeChunk(audio->laser, 1);
+		Mix_PlayChannel(1, audio->laser, 0);
 		///fire
 
 		break;

@@ -27,6 +27,10 @@ struct Graphics_struct {
     SDL_Renderer *renderer;
 };
 
+struct Audio_struct {
+	Mix_Chunk *laser;
+};
+
 /**
  * Struct describing a game
  */

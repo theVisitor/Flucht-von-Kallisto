@@ -82,6 +82,16 @@ int play(SDL_Renderer *renderer, SDL_Window *window, int mapnumber, int difficul
         printf("tx success\n");
     }
 
+	if (loadAudio(&audio))
+	{
+		printf("audio dail\n");
+		return -2
+	}
+	else
+	{
+		printf("audio success\n");
+	}
+
     if (loadMap(&game, map, mapnumber, difficulty)) {
         printf("map fail\n");
         cleanupAll(&game);
@@ -127,7 +137,7 @@ int play(SDL_Renderer *renderer, SDL_Window *window, int mapnumber, int difficul
                 handleClick(&game, &click, &state, &selected, &building, map);
             }
         }
-        cycle(&graphics, &game, state, selected, building, map);  /// <- the actual game calculations
+        cycle(&graphics, &game, state, selected, building, map, audio);  /// <- the actual game calculations
         SDL_RenderPresent(graphics.renderer);
         if (clock() < framestart + fastFPSwait_SDL) {
             ///SDL_Delay is better for CPU
@@ -247,7 +257,7 @@ void handleClick(GameObject *game, SDL_Point *click, int *state, Turret **select
 /**
  * Function for updating and rendering the frame
  */
-int cycle(Graphics *graphics, GameObject *game, int state, Turret *selected, turretType building, Field map[]) {
+int cycle(Graphics *graphics, GameObject *game, int state, Turret *selected, turretType building, Field map[], Audio *audio) {
     game->frame = 1;
     while(game->frame < game->speed) {
         ///only updates, no render
@@ -260,7 +270,7 @@ int cycle(Graphics *graphics, GameObject *game, int state, Turret *selected, tur
         ///update enemies, turrets, stuff like that
         doWaves(game);
         doEnemies(graphics, game);
-        doTurrets(graphics, game);
+        doTurrets(graphics, game, audio);
         doFireObjects(graphics, game);
         doExplosions(graphics, game);
         game->frame++;
@@ -276,7 +286,7 @@ int cycle(Graphics *graphics, GameObject *game, int state, Turret *selected, tur
     ///update enemies, turrets, stuff like that
     doWaves(game);
     doEnemies(graphics, game);
-    doTurrets(graphics, game);
+    doTurrets(graphics, game, audio);
     doFireObjects(graphics, game);
     doExplosions(graphics, game);
 
