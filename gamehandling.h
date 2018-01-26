@@ -48,7 +48,7 @@ struct GameObject_struct {
 
     int missionStaff;       ///people working for the mission
     int factoryStaff;       ///people producing credits in the factory
-    int priority;           ///put to factory or mission?
+    int priority;           ///put to factory (1) or mission (0)?
     int missionProgress;    ///how far the mission has proceeded
     int missionEnd;         ///when the mission will end
     int wavetime;           ///frames passed since start of this wave

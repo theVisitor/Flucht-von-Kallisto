@@ -124,7 +124,11 @@ void updateTurrets(Graphics *graphics, GameObject *game, Audio *audio) {
             if (!turret->buildStatus && turretData[turret->type][turret->level].isAuto) {
                 ///construction of auto-turret completed,
                 ///let's send the guy back to the base
-                game->missionStaff++;
+                if (game->priority) {
+                    game->factoryStaff++;
+                } else {
+                    game->missionStaff++;
+                }
             }
         } else if (turret->cooldown >= 0 && turret->cooldown % turretData[turret->type][turret->level].cycleTime == 0) {
             ///It can fire!

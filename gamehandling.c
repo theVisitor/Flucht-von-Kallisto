@@ -57,7 +57,7 @@ int play(SDL_Renderer *renderer, SDL_Window *window, int mapnumber, int difficul
         .explosions = NULL,
 
         .factoryStaff = 0,
-        .priority = 0, //mission
+        .priority = 0, //init to mission for loading, changed later on to factory
         .missionProgress = 0,
         .wavetime = 1100,
         .speed = 1,
@@ -115,6 +115,9 @@ int play(SDL_Renderer *renderer, SDL_Window *window, int mapnumber, int difficul
     int state = 0;
     Turret *selected = NULL;
     turretType building;
+
+    ///moving persons to factory
+    changePriority(&game, 1);
 
     ///the main loop for playing, limited to 40fps
     SDL_Event event;
@@ -249,8 +252,10 @@ void handleClick(GameObject *game, SDL_Point *click, int *state, Turret **select
                 }
             }
         } else if (*state == 3 && game->credit >= turretData[*building][0].buildCost && (game->factoryStaff > 0 || game->missionStaff > 1)) {
+            ///build mode
             *state = 4;
         } else if (*state == 4) {
+            ///build cancelled
             *state = 3;
         }
     ///staff?
@@ -613,6 +618,7 @@ int getPerson(GameObject *game, int force) {
                 return 0;
             }
         }
+        ///last person
         if (game->missionStaff) {
             game->missionStaff = 0;
             return 0;
