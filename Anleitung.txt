@@ -1,0 +1,17 @@
+Du bist mit deinen Siedlern auf Kallisto, einem Jupitermond.
+
+Die Einheimischen greifen dich an und du musst zum Flüchten eine Rakete bauen. Gleichzeitig musst du Türme bauen, um dich zu verteidigen.
+
+Du kannst dein Personal aufteilen zwischen dem Bau der Rakete und der Fabrik. Mit Linksklick auf die Schaltflächen wird eine Person verschoben, mit Rechtsklick wird die Priorität gesetzt (verschiebt alle freien Arbeiter und bestimmt, wo Personen hergenommen werden und zurückkehren).
+
+In der Fabrik wird Baustoff produziert, mit dem du Türme bauen oder verbessern kannst. Es gibt acht verschiedene Typen an Türmen, jeder mit besonderen Eigenschaften. Wähle zum Bauen einfach einen der Turmtypen oben rechts aus. Mit einem Klick auf "Bauen" kannst du nun den Turm auf der Karte platzieren. Wenn du einen gebauten Turm anklickst, werden seine Werte angezeigt. Mit "Ausbau anzeigen" siehst du die Werte der nächsten Ausbaustufe, mit "Ausbauen" wird diese gebaut. Jeder Turmtyp hat vier Stufen.
+
+Das Bauen und Verbessern von Türmen benötigt Personal. Einige Türme müssen sogar ständig bemannt sein, um zu funktionieren. Bei diesen Türmen sowie während des (Aus-)Baus kann die Person mit "Verlassen" zurück in die Basis geschickt werden, mit "Besetzen" kehrt die Person zurück an ihre Arbeit. Andere Türme funktionieren automatisch, der Arbeiter kehrt dann nach dem (Aus-)Bau direkt zur Basis zurück.
+
+Unten rechts wird mit einem grünen Balken der Baufortschritt der Rakete angezeigt. Je mehr Personen an der Rakete arbeiten, desto schneller füllt sich der Balken. Es muss immer mindestens eine Person an der Rakete arbeiten. Das Level ist beendet, sobald die Rakete fertiggestellt ist.
+
+Es gibt drei unterschiedliche Arten von Einheimischen. In jeder Welle kommen mehr und stärkere Gegner, gegen die du dich verteidigen musst. Wenn ein Gegner deine Verteidigung durchbricht und die Basis erreicht, stirbt eine Person. Wenn alle Personen gestorben sind, ist das Level gescheitert. Deine Punktzahl wird bestimmt durch die Anzahl an Überlebenden.
+
+Viel Spaß beim Spielen!
+
+
