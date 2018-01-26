@@ -1,11 +1,10 @@
 # Flucht-von-Kallisto
-Ein Tower-Defense Spiel welches in Folge eines Programmierprojektes der Vorlesung "Prozedurale Programmierung" Anfang 2017 an der TUHH von drei Personen erschaffen wurde.
-Zur grafischen Umsetzung wurde SDL2 verwendet, wobei wir es leider noch nicht geschafft haben einen Spielton zu integrieren.
+Dies ist ein Tower-Defense Spiel, welches im Rahmen eines Programmierprojektes der Vorlesung "Prozedurale Programmierung" Anfang 2017 an der TUHH von drei Personen erschaffen wurde.
+Die Entwicklung läuft weiter, wenn wir gerade Zeit und Lust haben.
+Zur grafischen Umsetzung wurde SDL2 verwendet, Ton ist aktuell noch in Arbeit.
 Die Bedienung erfolgt per Maus und Tastatur.
 
-
-Bei der Entwicklung hatten wir mehrere Probleme mit SDL2 und konnten leider nicht alle beheben.
-Dies führt dazu, dass das Spiel auf einigen PCs einfach nicht laufen will.
+SDL2 verhält sich zum Teil unvorhersagbar, deshalb kann das Programm auf einigen PCs nicht gestartet werden.
 
 
 
